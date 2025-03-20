@@ -1,0 +1,23 @@
+[package]
+name = "rubber-duck-on-the-screen"
+version = "0.1.0"
+edition = "2024"
+
+[profile.dev]
+opt-level = 0
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+
+[profile.wasm-release]
+inherits = "release"
+opt-level = "s"
+strip = "debuginfo"
+
+[dependencies]
+bevy = "0.15.3"
+bevy_math = "0.15.3"
